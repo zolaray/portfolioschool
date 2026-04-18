@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lycée 1er Novembre 1954 - High School Portfolio</title>
+    
+    <!-- Google Fonts for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== ROOT & GENERAL STYLES ========== */
+        /* CSS variables for easy theme management and consistency */
+        :root {
+            --color-primary-green: #007B3A;      /* Algerian flag green */
+            --color-primary-red: #D21034;        /* Algerian flag red */
+            --color-accent-white: #FFFFFF;
+            --color-bg-cream: #FDFAF6;           /* Aged paper vintage feel */
+            --color-text-dark: #1a1a1a;
+            --color-text-light: #555555;
+            --color-border-light: #e0d5c8;
+            --font-heading: 'Playfair Display', 'Merriweather', serif;
+            --font-body: 'Inter', 'Roboto', sans-serif;
+            --spacing-unit: 1rem;
+            --transition-smooth: all 0.3s ease-in-out;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;  /* Smooth scrolling for navigation */
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-cream);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--color-text-dark);
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        a {
+            color: var(--color-primary-green);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        a:hover {
+            color: var(--color-primary-red);
+        }
+
+        /* ========== NAVIGATION BAR ========== */
+        /* Sticky header that stays at the top while scrolling */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--color-accent-white);
+            box-shadow: var(--shadow-light);
+            z-index: 100;
+            padding: 0 calc(var(--spacing-unit) * 2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: calc(var(--spacing-unit) * 2);
+            align-items: center;
+            padding: calc(var(--spacing-unit) * 1.2) 0;
+        }
+
+        nav li a {
+            font-weight: 500;
+            padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1);
+            border-bottom: 2px solid transparent;
+            transition: var(--transition-smooth);
+        }
+
+        nav li a:hover {
+            border-bottom-color: var(--color-primary-green);
+        }
+
+        /* Added flag icon in navbar - small visual accent */
+        .flag-icon {
+            display: inline-block;
+            width: 30px;
+            height: 20px;
+            background: linear-gradient(to right, var(--color-primary-green) 33%, var(--color-accent-white) 33%, var(--color-accent-white) 66%, var(--color-primary-red) 66%);
+            border-radius: 2px;
+            margin-right: var(--spacing-unit);
+        }
+
+        /* ========== CONTAINER & LAYOUT HELPERS ========== */
+        /* Main content wrapper with max-width and centered alignment */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 calc(var(--spacing-unit) * 2);
+        }
+
+        /* Section wrapper with consistent vertical spacing */
+        section {
+            padding: calc(var(--spacing-unit) * 4) 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* Flexbox utilities for layout */
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: calc(var(--spacing-unit) * 2);
+        }
+
+        /* Grid utilities for card layouts */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: calc(var(--spacing-unit) * 2);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(var(--spacing-unit) * 2);
+        }
+
+        /* ========== HERO SECTION ========== */
+        /* Eye-catching introduction section */
+        #hero {
+            background: linear-gradient(135deg, var(--color-primary-green) 0%, var(--color-accent-white) 100%);
+            color: var(--color-text-dark);
+            padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative accent stripe with flag colors */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--color-primary-green) 33%, var(--color-accent-white) 33%, var(--color-accent-white) 66%, var(--color-primary-red) 66%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            color: var(--color-primary-green);
+        }
+
+        .hero-content .subtitle-french {
+            font-size: 1.5rem;
+            color: var(--color-primary-red);
+            font-weight: 500;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-style: italic;
+        }
+
+        .hero-content .location {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--color-text-light);
+            font-family: var(--font-body);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========== SECTION STYLES & TEXT ========== */
+        .section-title {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            position: relative;
+            padding-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+
+        /* Decorative underline using pseudo-element */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-primary-green), var(--color-primary-red));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ========== OVERVIEW SECTION ========== */
+        #overview {
+            background-color: var(--color-accent-white);
+        }
+
+        .overview-box {
+            background-color: rgba(0, 123, 58, 0.05);
+            padding: calc(var(--spacing-unit) * 3);
+            border-left: 5px solid var(--color-primary-green);
+            border-radius: 4px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .overview-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text-dark);
+        }
+
+        /* ========== EDUCATIONAL PHILOSOPHY SECTION ========== */
+        #philosophy {
+            background-color: var(--color-bg-cream);
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-accent-white);
+            padding: calc(var(--spacing-unit) * 3);
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .philosophy-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text-dark);
+        }
+
+        /* ========== ACHIEVEMENTS SECTION (KEY VISUAL ELEMENT) ========== */
+        /* Cards with hover effects - visually stand out as requested */
+        #achievements {
+            background-color: var(--color-accent-white);
+        }
+
+        /* Achievement card styling - each represents a key achievement */
+        .achievement-card {
+            background-color: var(--color-bg-cream);
+            padding: calc(var(--spacing-unit) * 2.5);
+            border: 2px solid var(--color-border-light);
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Hover effect: subtle green border and shadow as specified */
+        .achievement-card:hover {
+            border-color: var(--color-primary-green);
+            box-shadow: 0 8px 24px rgba(0, 123, 58, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-unit);
+            display: block;
+        }
+
+        .achievement-card h3 {
+            color: var(--color-primary-green);
+            margin-bottom: calc(var(--spacing-unit) * 0.8);
+        }
+
+        .achievement-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        /* ========== SPECIAL FEATURES SECTION ========== */
+        #features {
+            background-color: var(--color-bg-cream);
+        }
+
+        .feature-item {
+            background-color: var(--color-accent-white);
+            padding: calc(var(--spacing-unit) * 2.5);
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            border-top: 4px solid var(--color-primary-green);
+            transition: var(--transition-smooth);
+        }
+
+        .feature-item:hover {
+            box-shadow: var(--shadow-medium);
+            border-top-color: var(--color-primary-red);
+        }
+
+        .feature-item h3 {
+            color: var(--color-primary-green);
+            margin-bottom: var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 0.5);
+        }
+
+        .feature-item p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        #contact {
+            background-color: var(--color-accent-white);
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--color-bg-cream);
+            padding: calc(var(--spacing-unit) * 3);
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .contact-item {
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            padding-bottom: calc(var(--spacing-unit) * 2);
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--color-primary-green);
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 0.3);
+            font-size: 1.05rem;
+        }
+
+        .contact-item a {
+            font-size: 1.1rem;
+            color: var(--color-primary-red);
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+            color: var(--color-primary-green);
+        }
+
+        .contact-item p {
+            color: var(--color-text-dark);
+            font-size: 1rem;
+        }
+
+        /* ========== QUICK FACT BOX (ROTATING) ========== */
+        /* Fun educational element with rotating facts */
+        .quick-fact-box {
+            background: linear-gradient(135deg, rgba(0, 123, 58, 0.1), rgba(210, 16, 52, 0.1));
+            border-left: 4px solid var(--color-primary-green);
+            padding: calc(var(--spacing-unit) * 2);
+            margin: calc(var(--spacing-unit) * 2) auto;
+            max-width: 600px;
+            border-radius: 4px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .quick-fact-box p {
+            font-style: italic;
+            color: var(--color-text-dark);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: var(--color-text-dark);
+            color: var(--color-accent-white);
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+            border-top: 4px solid var(--color-primary-green);
+        }
+
+        footer p {
+            color: var(--color-accent-white);
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+        }
+
+        footer a {
+            color: var(--color-primary-green);
+        }
+
+        footer a:hover {
+            color: var(--color-primary-red);
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            display: inline-block;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, var(--color-primary-green), var(--color-primary-red));
+            margin: calc(var(--spacing-unit) * 1.5) 0;
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        /* Tablets and smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 calc(var(--spacing-unit) * 1);
+            }
+
+            nav ul {
+                gap: var(--spacing-unit);
+                padding: var(--spacing-unit) 0;
+            }
+
+            nav li a {
+                font-size: 0.9rem;
+                padding: calc(var(--spacing-unit) * 0.4) calc(var(--spacing-unit) * 0.6);
+            }
+
+            #hero {
+                padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 1.5);
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .subtitle-french {
+                font-size: 1.2rem;
+            }
+
+            .grid-4, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: calc(var(--spacing-unit) * 2.5) 0;
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: calc(var(--spacing-unit) * 0.5);
+                padding: calc(var(--spacing-unit) * 0.8) 0;
+            }
+
+            nav li a {
+                font-size: 0.85rem;
+                padding: calc(var(--spacing-unit) * 0.3) calc(var(--spacing-unit) * 0.4);
+            }
+
+            .flag-icon {
+                display: none;
+            }
+
+            #hero {
+                padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 1);
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: calc(var(--spacing-unit) * 2) 0;
+            }
+
+            .overview-box, .philosophy-content, .contact-info {
+                padding: calc(var(--spacing-unit) * 2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== NAVIGATION MENU ========== -->
+    <!-- Sticky navigation bar with smooth scrolling links -->
+    <nav>
+        <ul>
+            <li>
+                <span class="flag-icon" title="Algerian Flag"></span>
+            </li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#overview">About</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <!-- Eye-catching introduction with school name, location, and inspiring tagline -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>1er Novembre 1954 High School</h1>
+            <div class="subtitle-french">Lycée 1er Novembre 1954</div>
+            <p class="location">
+                <strong>Ouahate Chamalia, Laghouat, Algeria</strong>
+            </p>
+            <p class="tagline">
+                "A bridge between national heritage and future innovation"
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== OVERVIEW SECTION ========== -->
+    <!-- Brief introduction to the school's identity and significance -->
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="overview-box">
+                <p>
+                    <strong>Lycée 1er Novembre 1954</strong> is a leading secondary education institution 
+                    named after the historic date of the Algerian Revolution, symbolizing a bridge between 
+                    national heritage and future innovation. We are committed to academic excellence and 
+                    the development of responsible citizens prepared for the challenges of tomorrow.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EDUCATIONAL PHILOSOPHY SECTION ========== -->
+    <!-- Statement of school's mission and educational approach -->
+    <section id="philosophy">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="philosophy-content">
+                <p>
+                    Our mission is to foster academic excellence while nurturing civic responsibility. 
+                    We provide a competitive environment for students in Science, Mathematics, and Literature, 
+                    preparing them for the National Baccalaureate with rigorous standards. 
+                </p>
+                <p>
+                    At Lycée 1er Novembre 1954, we believe in developing well-rounded individuals who are 
+                    not only intellectually prepared but also deeply connected to their cultural heritage 
+                    and social responsibilities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== KEY ACHIEVEMENTS & PRIZES SECTION ========== -->
+    <!-- Highlighted achievements shown as four cards with hover effects -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Key Achievements & Prizes</h2>
+            <p class="section-subtitle">
+                Recognition of excellence across innovation, academics, culture, and athletics
+            </p>
+
+            <!-- Grid of achievement cards - automatically responsive -->
+            <div class="grid-4">
+                <!-- Card 1: Innovation Award -->
+                <div class="achievement-card">
+                    <span class="achievement-icon">🚀</span>
+                    <h3>Innovation Award</h3>
+                    <p>
+                        The school hosts an annual Innovation Competition, encouraging students to develop 
+                        tech-driven solutions for real-world problems, supervised by the Computer Science department.
+                    </p>
+                </div>
+
+                <!-- Card 2: Academic Excellence -->
+                <div class="achievement-card">
+                    <span class="achievement-icon">🏆</span>
+                    <h3>Academic Excellence</h3>
+                    <p>
+                        Consistently high success rates in the National Baccalaureate, particularly in 
+                        Science and Mathematics streams.
+                    </p>
+                </div>
+
+                <!-- Card 3: Cultural & Historical Heritage -->
+                <div class="achievement-card">
+                    <span class="achievement-icon">📚</span>
+                    <h3>Cultural & Historical Heritage</h3>
+                    <p>
+                        Winner of regional awards for historical documentaries during "Youm El-Ilm" 
+                        (National Science Day), preserving the memory of the Algerian Revolution.
+                    </p>
+                </div>
+
+                <!-- Card 4: Sports Performance -->
+                <div class="achievement-card">
+                    <span class="achievement-icon">⚽</span>
+                    <h3>Sports Performance</h3>
+                    <p>
+                        Active participant and frequent finalist in regional inter-school football 
+                        and basketball championships.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SPECIAL FEATURES SECTION ========== -->
+    <!-- Three key features/advantages presented as cards -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Special Features</h2>
+            <p class="section-subtitle">
+                What sets us apart as an institution of learning
+            </p>
+
+            <div class="grid-3">
+                <!-- Feature 1: Digital Integration -->
+                <div class="feature-item">
+                    <h3>💻 Digital Integration</h3>
+                    <p>
+                        Advanced use of digital platforms (Parent Portal) for real-time tracking of 
+                        student progress and grades. We embrace technology to enhance communication 
+                        and transparency.
+                    </p>
+                </div>
+
+                <!-- Feature 2: Experimental Learning -->
+                <div class="feature-item">
+                    <h3>🔬 Experimental Learning</h3>
+                    <p>
+                        Equipped laboratories for Physics, Chemistry, and Natural Sciences to support 
+                        hands-on learning. Students gain practical experience alongside theoretical knowledge.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Location Advantage -->
+                <div class="feature-item">
+                    <h3>📍 Location Advantage</h3>
+                    <p>
+                        Situated in the educational hub of Laghouat, providing a quiet and focused 
+                        environment for learning. Our location offers the perfect balance of accessibility 
+                        and serenity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== QUICK FACT BOX (ROTATING) ========== -->
+    <!-- Fun rotating facts about Algeria and education -->
+    <div class="container">
+        <div class="quick-fact-box">
+            <p id="rotating-fact">
+                Did you know? November 1, 1954, marks the beginning of the Algerian War of Independence.
+            </p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <!-- Contact information with clickable phone and email links -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+
+            <div class="contact-info">
+                <!-- Address -->
+                <div class="contact-item">
+                    <strong>📍 Address</strong>
+                    <p>Route de Djelfa, Ouahate Chamalia<br>Laghouat 03000, Algeria</p>
+                </div>
+
+                <!-- Phone Number - clickable link using tel: protocol -->
+                <div class="contact-item">
+                    <strong>📞 Phone</strong>
+                    <a href="tel:+213291120017">+213 (0) 29 11 20 17</a>
+                </div>
+
+                <!-- Email - clickable link using mailto: protocol -->
+                <div class="contact-item">
+                    <strong>📧 Email</strong>
+                    <a href="mailto:lycee.1novembre1954@gmail.com">lycee.1novembre1954@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <!-- Footer with motto, year, and closing statement -->
+    <footer>
+        <div class="container">
+            <div class="footer-divider"></div>
+            <p>
+                <strong>Honoring the legacy of November 1, 1954<br>Educating the next generation of Algeria</strong>
+            </p>
+            <p style="margin-top: calc(var(--spacing-unit) * 1.5); font-size: 0.9rem; color: #aaa;">
+                © <span id="year"></span> &nbsp; Lycée 1er Novembre 1954 &nbsp; | &nbsp; All Rights Reserved
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        /* ===== AUTO-UPDATE YEAR IN FOOTER ===== */
+        /* Automatically sets the current year - no manual updating needed */
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        /* ===== ROTATING QUICK FACTS ===== */
+        /* Array of educational and culturally relevant facts */
+        const facts = [
+            "Did you know? November 1, 1954, marks the beginning of the Algerian War of Independence.",
+            "Fun fact: Algeria is the largest country in Africa by area, covering 2.38 million square kilometers.",
+            "Educational insight: The Baccalaureate exam is a key milestone for students across Algeria.",
+            "Did you know? Laghouat, called the 'Gateway to the Sahara,' is known for its rich cultural heritage.",
+            "Historical note: The Algerian Revolution (1954-1962) was a transformative period in African history.",
+            "Fun fact: Algeria has a diverse education system with a strong focus on STEM fields.",
+            "Cultural tidbit: Youm El-Ilm (National Science Day) celebrates scientific achievement in Algeria.",
+            "Did you know? Algerian youth are increasingly engaged in innovation and technological development."
+        ];
+
+        let currentFactIndex = 0;
+
+        /* Function to rotate facts every 8 seconds */
+        function rotateFact() {
+            const factElement = document.getElementById('rotating-fact');
+            currentFactIndex = (currentFactIndex + 1) % facts.length;
+            
+            /* Fade out effect */
+            factElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                factElement.textContent = facts[currentFactIndex];
+                /* Fade in effect */
+                factElement.style.opacity = '1';
+            }, 300);
+        }
+
+        /* Smooth fade transition for facts */
+        const factBox = document.querySelector('.quick-fact-box p');
+        if (factBox) {
+            factBox.style.transition = 'opacity 0.3s ease-in-out';
+            factBox.style.opacity = '1';
+        }
+
+        /* Start rotating facts every 8 seconds */
+        setInterval(rotateFact, 8000);
+
+        /* ===== SMOOTH SCROLL ENHANCEMENT ===== */
+        /* Adds a small bounce effect when scrolling to sections */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        /* ===== ACHIEVEMENT CARD ANIMATION ===== */
+        /* Cards animate slightly when they come into view */
+        const achievementCards = document.querySelectorAll('.achievement-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-in-out forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        achievementCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        /* CSS animation for cards appearing */
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        /* ===== SMOOTH SCROLLBAR POSITIONING ===== */
+        /* Adds padding to scroll targets so they don't hide behind sticky nav */
+        document.querySelectorAll('section[id]').forEach(section => {
+            section.style.scrollMarginTop = '60px';
+        });
+    </script>
+</body>
+</html>

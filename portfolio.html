@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lycée 1er Novembre 1954 | Laghouat, Algeria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: #FDFAF6;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+
+        /* Language-specific fonts */
+        html[lang="ar"] body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            direction: rtl;
+        }
+        html[lang="ar"] .section-title {
+            border-left: none;
+            border-right: 4px solid #D21034;
+            padding-left: 0;
+            padding-right: 1rem;
+            text-align: right;
+        }
+        html[lang="fr"] body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #007B3A;
+        }
+
+        .logo p {
+            font-size: 0.75rem;
+            color: #D21034;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #007B3A;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .lang-btn {
+            background: none;
+            border: 1px solid #007B3A;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            color: #007B3A;
+        }
+        .lang-btn.active {
+            background: #007B3A;
+            color: white;
+        }
+        .lang-btn:hover {
+            background: #007B3A;
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #007B3A 0%, #005a2a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #007B3A;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #D21034;
+            padding-left: 1rem;
+        }
+
+        /* Cards Grid */
+        .achievements-grid, .features-grid, .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .achievement-card, .feature-card, .gallery-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .achievement-card {
+            border-left: 3px solid #007B3A;
+        }
+
+        .achievement-card:hover, .feature-card:hover, .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .achievement-card h3, .feature-card h3, .gallery-card h3 {
+            color: #007B3A;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #D21034;
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+        }
+
+        /* Gallery Images */
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .gallery-img.placeholder {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+        }
+
+        /* Contact */
+        .contact {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item strong {
+            width: 80px;
+            color: #007B3A;
+        }
+
+        .contact-item a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #007B3A;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .flag-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #007B3A 33%, #ffffff 33%, #ffffff 66%, #D21034 66%);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .nav-container { flex-direction: column; text-align: center; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flag-bar"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1 data-en="Lycée 1er Novembre 1954" data-fr="Lycée 1er Novembre 1954" data-ar="ثانوية 1 نوفمبر 1954">Lycée 1er Novembre 1954</h1>
+                <p data-en="Ouahate Chamalia · Laghouat · Algeria" data-fr="Ouahate Chamalia · Laghouat · Algérie" data-ar="وحات شمالية · الأغواط · الجزائر">Ouahate Chamalia · Laghouat · Algeria</p>
+            </div>
+            <ul class="nav-links">
+                <li><a data-en="Home" data-fr="Accueil" data-ar="الرئيسية">Home</a></li>
+                <li><a data-en="Achievements" data-fr="Réalisations" data-ar="الإنجازات">Achievements</a></li>
+                <li><a data-en="Features" data-fr="Atouts" data-ar="المميزات">Features</a></li>
+                <li><a data-en="Gallery" data-fr="Galerie" data-ar="المعرض">Gallery</a></li>
+                <li><a data-en="Contact" data-fr="Contact" data-ar="اتصل بنا">Contact</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1 data-en="1er Novembre 1954 High School" data-fr="Lycée 1er Novembre 1954" data-ar="ثانوية 1 نوفمبر 1954">1er Novembre 1954 High School</h1>
+            <div style="margin-top: 1rem; font-style: italic;" data-en='"A bridge between national heritage and future innovation"' data-fr='"Un pont entre le patrimoine national et l\'innovation future"' data-ar='"جسر بين التراث الوطني والابتكار المستقبلي"'>"A bridge between national heritage and future innovation"</div>
+        </div>
+
+        <!-- ACHIEVEMENTS SECTION -->
+        <h2 class="section-title" data-en="🏆 Key Achievements" data-fr="🏆 Réalisations Clés" data-ar="🏆 الإنجازات الرئيسية">🏆 Key Achievements</h2>
+        <div class="achievements-grid">
+            <!-- Innovation Award + Tree Planting Campaign -->
+            <div class="achievement-card">
+                <h3 data-en="💡 Innovation Award & Tree Planting Campaign" data-fr="💡 Prix d'Innovation & Campagne de Reboisement" data-ar="💡 جائزة الابتكار وحملة التشجير">💡 Innovation Award & Tree Planting Campaign</h3>
+                <p data-en="The school hosts an annual Innovation Competition where students develop tech-driven solutions. Additionally, students organize successful Tree Planting Campaigns (حملة تشجير) to protect the environment and beautify the school." data-fr="L'école organise un concours d'innovation annuel où les élèves développent des solutions technologiques. De plus, les élèves organisent des campagnes de reboisement réussies pour protéger l'environnement." data-ar="تنظم المدرسة مسابقة ابتكار سنوية حيث يطور الطلاب حلولًا تقنية. بالإضافة إلى ذلك، ينظم الطلاب حملات تشجير ناجحة لحماية البيئة وتجميل المدرسة.">The school hosts an annual Innovation Competition where students develop tech-driven solutions. Additionally, students organize successful Tree Planting Campaigns to protect the environment.</p>
+                <span class="badge" data-en="📸 Photos available" data-fr="📸 Photos disponibles" data-ar="📸 صور متوفرة">📸 Photos available</span>
+            </div>
+
+            <!-- Academic Excellence + National Competition & TV -->
+            <div class="achievement-card">
+                <h3 data-en="📚 Academic Excellence - National Champions" data-fr="📚 Excellence Académique - Champions Nationaux" data-ar="📚 التميز الأكاديمي - أبطال وطنيون">📚 Academic Excellence - National Champions</h3>
+                <p data-en="Our students reached the semi-finals of the National Academic Competition among all schools in Algeria. They represented the SOUTH of Algeria and achieved FIRST PLACE in the region. This historic achievement was featured on NATIONAL TELEVISION!" data-fr="Nos élèves ont atteint les demi-finales du Concours Académique National parmi toutes les écoles d'Algérie. Ils ont représenté le SUD de l'Algérie et ont obtenu la PREMIÈRE PLACE de la région. Cet exploit historique a été diffusé à la TÉLÉVISION NATIONALE!" data-ar="وصل طلابنا إلى نصف نهائي المسابقة الأكاديمية الوطنية بين جميع مدارس الجزائر. مثلوا جنوب الجزائر وحققوا المركز الأول على مستوى المنطقة. تم بث هذا الإنجاز التاريخي على التلفزيون الوطني!">Our students reached the semi-finals of the National Academic Competition among all schools in Algeria. They represented the SOUTH of Algeria and achieved FIRST PLACE in the region. This historic achievement was featured on NATIONAL TELEVISION!</p>
+                <span class="badge" data-en="📺 Featured on National TV + 📸 Photos" data-fr="📺 Diffusé à la TV Nationale + 📸 Photos" data-ar="📺 بث على التلفزيون الوطني + 📸 صور">📺 Featured on National TV + 📸 Photos</span>
+            </div>
+
+            <!-- Sports Performance - Football Champions -->
+            <div class="achievement-card">
+                <h3 data-en="⚽ Sports Performance - Football Champions" data-fr="⚽ Performance Sportive - Champions de Football" data-ar="⚽ الأداء الرياضي - أبطال كرة القدم">⚽ Sports Performance - Football Champions</h3>
+                <p data-en="Our football team won FIRST PLACE in the inter-school football competition, defeating multiple schools. The team brought the championship trophy to Laghouat and made the entire region proud!" data-fr="Notre équipe de football a remporté la PREMIÈRE PLACE dans la compétition inter-écoles, battant plusieurs écoles. L'équipe a ramené le trophée du championnat à Laghouat et a rendu toute la région fière!" data-ar="فاز فريق كرة القدم لدينا بالمركز الأول في مسابقة كرة القدم بين المدارس، متفوقًا على عدة مدارس. أعاد الفريق كأس البطولة إلى الأغواط وجعل المنطقة بأكملها فخورة!">Our football team won FIRST PLACE in the inter-school football competition, defeating multiple schools. The team brought the championship trophy to Laghouat!</p>
+                <span class="badge" data-en="🏆 Champions + 📸 Photos" data-fr="🏆 Champions + 📸 Photos" data-ar="🏆 أبطال + 📸 صور">🏆 Champions + 📸 Photos</span>
+            </div>
+
+            <!-- Top Student in Laghouat (Baccalaureate) -->
+            <div class="achievement-card">
+                <h3 data-en="🎓 #1 Student in Laghouat - Baccalaureate" data-fr="🎓 #1 Élève à Laghouat - Baccalauréat" data-ar="🎓 الأول على مستوى الأغواط - البكالوريا">🎓 #1 Student in Laghouat - Baccalaureate</h3>
+                <p data-en="Every year, our students consistently achieve the FIRST PLACE in Laghouat for the National Baccalaureate exam. This is a tradition of excellence that the school maintains year after year." data-fr="Chaque année, nos élèves obtiennent constamment la PREMIÈRE PLACE à Laghouat pour l'examen du Baccalauréat National. C'est une tradition d'excellence que l'école maintient année après année." data-ar="كل عام، يحقق طلابنا باستمرار المركز الأول في الأغواط في امتحان البكالوريا الوطنية. هذا تقليد من التميز تحافظ عليه المدرسة عامًا بعد عام.">Every year, our students consistently achieve the FIRST PLACE in Laghouat for the National Baccalaureate exam. This is a tradition of excellence!</p>
+                <span class="badge" data-en="🥇 #1 Every Year" data-fr="🥇 #1 Chaque Année" data-ar="🥇 الأول كل عام">🥇 #1 Every Year</span>
+            </div>
+
+            <!-- Club Activities -->
+            <div class="achievement-card">
+                <h3 data-en="🎭 Student Clubs & Activities" data-fr="🎭 Clubs et Activités Étudiantes" data-ar="🎭 الأندية والأنشطة الطلابية">🎭 Student Clubs & Activities</h3>
+                <p data-en="Our school has active clubs including: Science Club, Robotics Club, Environmental Club (organizing tree planting), Art Club, and Debate Club. Students participate in regional and national competitions regularly." data-fr="Notre école a des clubs actifs : Club Scientifique, Club Robotique, Club Environnemental (organisation de reboisement), Club d'Art et Club de Débat. Les élèves participent régulièrement à des compétitions régionales et nationales." data-ar="مدرستنا لديها أندية نشطة تشمل: النادي العلمي، نادي الروبوتات، النادي البيئي (تنظيم التشجير)، نادي الفنون، ونادي المناظرة. يشارك الطلاب بانتظام في المسابقات الجهوية والوطنية.">Our school has active clubs including: Science Club, Robotics Club, Environmental Club (organizing tree planting), Art Club, and Debate Club.</p>
+                <span class="badge" data-en="🎉 Multiple Clubs + 📸 Photos" data-fr="🎉 Clubs Multiples + 📸 Photos" data-ar="🎉 أندية متعددة + 📸 صور">🎉 Multiple Clubs + 📸 Photos</span>
+            </div>
+        </div>
+
+        <!-- SPECIAL FEATURES -->
+        <h2 class="section-title" data-en="✨ Special Features" data-fr="✨ Points Forts" data-ar="✨ المميزات الخاصة">✨ Special Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3 data-en="💻 Digital Integration" data-fr="💻 Intégration Numérique" data-ar="💻 التكامل الرقمي">💻 Digital Integration</h3>
+                <p data-en="Advanced use of digital platforms (Parent Portal) for real-time tracking of student progress and grades." data-fr="Utilisation avancée des plateformes numériques (Portail Parents) pour le suivi en temps réel des progrès et des notes des élèves." data-ar="استخدام متقدم للمنصات الرقمية (بوابة أولياء الأمور) لمتابعة تقدم الطلاب ودرجاتهم في الوقت الفعلي.">Advanced use of digital platforms (Parent Portal) for real-time tracking of student progress and grades.</p>
+            </div>
+            <div class="feature-card">
+                <h3 data-en="🔬 Experimental Learning" data-fr="🔬 Apprentissage Expérimental" data-ar="🔬 التعلم التجريبي">🔬 Experimental Learning</h3>
+                <p data-en="Equipped laboratories for Physics, Chemistry, and Natural Sciences to support hands-on learning." data-fr="Laboratoires équipés pour la Physique, la Chimie et les Sciences Naturelles pour soutenir l'apprentissage pratique." data-ar="مختبرات مجهزة للفيزياء والكيمياء والعلوم الطبيعية لدعم التعلم العملي.">Equipped laboratories for Physics, Chemistry, and Natural Sciences to support hands-on learning.</p>
+            </div>
+            <div class="feature-card">
+                <h3 data-en="📍 Location Advantage" data-fr="📍 Avantage Géographique" data-ar="📍 الموقع المتميز">📍 Location Advantage</h3>
+                <p data-en="Situated in the educational hub of Laghouat, providing a quiet and focused environment for learning." data-fr="Situé dans le pôle éducatif de Laghouat, offrant un environnement calme et propice à l'apprentissage." data-ar="يقع في قلب المنطقة التعليمية بالأغواط، مما يوفر بيئة هادئة ومركزة للتعلم.">Situated in the educational hub of Laghouat, providing a quiet and focused environment for learning.</p>
+            </div>
+        </div>
+
+        <!-- GALLERY SECTION - Add your photos here -->
+        <h2 class="section-title" data-en="📸 Photo Gallery" data-fr="📸 Galerie Photos" data-ar="📸 معرض الصور">📸 Photo Gallery</h2>
+        <div class="gallery-grid">
+            <!-- HOW TO ADD YOUR IMAGES: 
+                 Replace 'your-image-name.jpg' with your actual file names.
+                 Place your images in the same folder as this HTML file.
+            -->
+            
+            <div class="gallery-card">
+                <div class="gallery-img placeholder">
+                    <!-- Change 'tree-planting.jpg' to your actual image file name -->
+                    <img src="Tree Planting Campaign.jpg" alt="Tree Planting Campaign" onerror="this.parentElement.innerHTML='🌳 Tree Planting Campaign<br>📸 Add image: tree-planting.jpg'">
+                </div>
+                <h3 data-en="🌳 Tree Planting Campaign" data-fr="🌳 Campagne de Reboisement" data-ar="🌳 حملة التشجير">🌳 Tree Planting Campaign</h3>
+                <p data-en="Students participating in the annual tree planting campaign (حملة تشجير) to protect the environment." data-fr="Élèves participant à la campagne annuelle de reboisement pour protéger l'environnement." data-ar="طلاب يشاركون في حملة التشجير السنوية لحماية البيئة.">Students participating in the annual tree planting campaign.</p>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img placeholder">
+                    <img src=" Nteclevisian.jpg" alt="National TV Appearance" onerror="this.parentElement.innerHTML='📺 National TV<br>📸 Add image: national-tv.jpg'">
+                </div>
+                <h3 data-en="📺 National Television" data-fr="📺 Télévision Nationale" data-ar="📺 التلفزيون الوطني">📺 National Television</h3>
+                <p data-en="Our students featured on national TV for their academic achievements representing the South of Algeria." data-fr="Nos élèves apparaissent à la télévision nationale pour leurs réalisations académiques représentant le Sud de l'Algérie." data-ar="طلابنا على التلفزيون الوطني لإنجازاتهم الأكاديمية ممثلين جنوب الجزائر.">Our students featured on national TV representing the South of Algeria.</p>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img placeholder">
+                    <img src="sport Competition.jpg" alt="Football Champions" onerror="this.parentElement.innerHTML='⚽ Football Champions<br>📸 Add image: football-champions.jpg'">
+                </div>
+                <h3 data-en="⚽ Football Champions" data-fr="⚽ Champions de Football" data-ar="⚽ أبطال كرة القدم">⚽ Football Champions</h3>
+                <p data-en="Our football team celebrating their first-place victory in the inter-school competition." data-fr="Notre équipe de football célébrant sa victoire en première place dans la compétition inter-écoles." data-ar="فريق كرة القدم لدينا يحتفل بفوزه بالمركز الأول في المسابقة بين المدارس.">Our football team celebrating their first-place victory.</p>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img placeholder">
+                    <img src="Student Club Activities.jpg" alt="Student Clubs" onerror="this.parentElement.innerHTML='🎭 Student Clubs<br>📸 Add image: club-activities.jpg'">
+                </div>
+                <h3 data-en="🎭 Student Club Activities" data-fr="🎭 Activités des Clubs Étudiants" data-ar="🎭 أنشطة الأندية الطلابية">🎭 Student Club Activities</h3>
+                <p data-en="Students participating in various club activities throughout the school year." data-fr="Élèves participant à diverses activités de clubs tout au long de l'année scolaire." data-ar="طلاب يشاركون في مختلف الأنشطة النادي طوال العام الدراسي.">Students participating in various club activities.</p>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img placeholder">
+                    <img src="innovationcom.jpg" alt="Innovation Award" onerror="this.parentElement.innerHTML='💡 Innovation Award<br>📸 Add image: innovation-award.jpg'">
+                </div>
+                <h3 data-en="💡 Innovation Competition" data-fr="💡 Concours d'Innovation" data-ar="💡 مسابقة الابتكار">💡 Innovation Competition</h3>
+                <p data-en="Students presenting their tech-driven solutions at the annual Innovation Competition." data-fr="Élèves présentant leurs solutions technologiques au concours annuel d'innovation." data-ar="طلاب يقدمون حلولهم التقنية في مسابقة الابتكار السنوية.">Students presenting their tech-driven solutions.</p>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img placeholder">
+                    <img src="top-student.jpg" alt="Top Student Award" onerror="this.parentElement.innerHTML='🎓 #1 Student<br>📸 Add image: top-student.jpg'">
+                </div>
+                <h3 data-en="🎓 #1 Student in Laghouat" data-fr="🎓 #1 Élève à Laghouat" data-ar="🎓 الأول على الأغواط">🎓 #1 Student in Laghouat</h3>
+                <p data-en="Celebrating our student who achieved first place in the Baccalaureate exam in Laghouat." data-fr="Célébration de notre élève qui a obtenu la première place à l'examen du Baccalauréat à Laghouat." data-ar="الاحتفال بالطالب الذي حصل على المركز الأول في امتحان البكالوريا على مستوى الأغواط.">Celebrating our top Baccalaureate student.</p>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact">
+            <h2 class="section-title" data-en="📞 Contact Information" data-fr="📞 Coordonnées" data-ar="📞 معلومات الاتصال">📞 Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-item"><strong>📍</strong><span data-en="Route de Djelfa, Ouahate Chamalia, Laghouat 03000, Algeria" data-fr="Route de Djelfa, Ouahate Chamalia, Laghouat 03000, Algérie" data-ar="طريق الجلفة، واحات شمالية، الأغواط 03000، الجزائر">Route de Djelfa, Ouahate Chamalia, Laghouat 03000, Algeria</span></div>
+                <div class="contact-item"><strong>📞</strong><a href="tel:+21329112017">+213 (0) 29 11 20 17</a></div>
+                <div class="contact-item"><strong>✉️</strong><a href="mailto:lycee.1novembre1954@gmail.com">lycee.1novembre1954@gmail.com</a></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p data-en="Honoring the legacy of November 1, 1954 — Educating the next generation of Algeria" data-fr="Honorer l'héritage du 1er novembre 1954 — Éduquer la prochaine génération d'Algérie" data-ar="تكريم إرث أول نوفمبر 1954 — تعليم الجيل القادم من الجزائر">Honoring the legacy of November 1, 1954 — Educating the next generation of Algeria</p>
+        <p style="margin-top: 0.5rem;">© 2025 Lycée 1er Novembre 1954 | Laghouat, Algeria</p>
+    </footer>
+
+    <!-- Language Switcher JavaScript -->
+    <script>
+        // Language switching functionality
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.setAttribute('lang', lang);
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (el.getAttribute(`data-${lang}`)) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.value = el.getAttribute(`data-${lang}`);
+                    } else {
+                        el.innerText = el.getAttribute(`data-${lang}`);
+                    }
+                }
+            });
+            
+            // Update active button styling
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Add click handlers to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-links a').forEach((anchor, index) => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sections = ['home', 'achievements', 'features', 'gallery', 'contact'];
+                const targetId = sections[index];
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Set IDs for sections (for navigation)
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) heroSection.id = 'home';
+        
+        const achievementsTitle = document.querySelector('.section-title');
+        if (achievementsTitle) achievementsTitle.id = 'achievements';
+        
+        const featuresTitle = document.querySelectorAll('.section-title')[1];
+        if (featuresTitle) featuresTitle.id = 'features';
+        
+        const galleryTitle = document.querySelectorAll('.section-title')[2];
+        if (galleryTitle) galleryTitle.id = 'gallery';
+        
+        const contactSection = document.querySelector('.contact');
+        if (contactSection) contactSection.id = 'contact';
+    </script>
+</body>
+</html>
